@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario para Futuros Emprendedores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .question h3 {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .options label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .options label:hover {
+            background-color: #e9ecef;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+
+        .resultado-excelente {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .resultado-bueno {
+            background-color: #cce5ff;
+            color: #004085;
+            border: 1px solid #b8daff;
+        }
+
+        .resultado-regular {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        .resultado-malo {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>¿Estás listo para emprender?</h1>
+        <form id="quizForm">
+            <div class="question">
+                <h3>1. ¿Qué te motiva principalmente a querer emprender?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="a"> a) Quiero ganar mucho dinero rápidamente
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b"> b) Tengo una idea o solución que puede ayudar a las
+                        personas
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c"> c) No me gusta tener jefes
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d"> d) Vi que otros han tenido éxito y quiero copiar su
+                        idea
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>2. Antes de iniciar un negocio, ¿qué crees que es lo más importante?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="a"> a) Tener mucho dinero para invertir
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b"> b) Identificar un problema o necesidad real de los
+                        clientes
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c"> c) Tener un local grande y bonito
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d"> d) Crear muchas redes sociales para el negocio
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>3. Si tu primer intento de negocio no funciona, ¿qué harías?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="a"> a) Me rindo, el emprendimiento no es para mí
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b"> b) Analizo qué salió mal, aprendo de los errores e
+                        intento de nuevo
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c"> c) Culpo a la mala suerte o a la economía
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d"> d) Copio exactamente lo que hace la competencia
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>4. ¿Cómo manejarías tu tiempo al emprender?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="a"> a) Trabajaré cuando tenga ganas
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b"> b) Estableceré un horario y metas diarias
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c"> c) Trabajaré 24/7 sin descanso
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d"> d) Contrataré personas para que hagan todo el trabajo
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>5. ¿Qué harías si un cliente está insatisfecho con tu producto o servicio?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="a"> a) Lo ignoro, no todos pueden estar contentos
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b"> b) Escucho su feedback y busco cómo mejorar
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c"> c) Le digo que está equivocado
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="d"> d) Le devuelvo su dinero y lo bloqueo
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>6. ¿Cómo planeas manejar las finanzas de tu negocio?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="a"> a) No es necesario llevar cuentas si hay ventas
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="b"> b) Llevaré un registro detallado de ingresos y gastos
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="c"> c) Mezclaré el dinero del negocio con mis gastos
+                        personales
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="d"> d) Gastaré todo lo que gane en mejorar el local
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>7. ¿Qué harías antes de lanzar tu producto o servicio?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="a"> a) Lo lanzo directamente, ya sé que funcionará
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="b"> b) Hago pruebas con usuarios y recibo feedback
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="c"> c) Espero a que sea perfecto
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="d"> d) Hago una gran fiesta de inauguración
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Ver mis resultados</button>
+        </form>
+        <div class="progress-bar">
+            <div class="progress" style="width: 0%"></div>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        // Respuestas que indican mejor mentalidad emprendedora
+        const respuestasCorrectas = {
+            q1: 'b', // Tener una solución que ayude a otros
+            q2: 'b', // Identificar necesidades reales
+            q3: 'b', // Aprender de los errores
+            q4: 'b', // Establecer horario y metas
+            q5: 'b', // Escuchar feedback
+            q6: 'b', // Llevar registro financiero
+            q7: 'b'  // Hacer pruebas y recibir feedback
+        };
+
+        // Mensajes según el puntaje
+        const mensajes = {
+            0: "¡No te preocupes! Es el momento perfecto para comenzar a aprender sobre emprendimiento. Te recomendamos tomar algunos cursos básicos y leer sobre experiencias de otros emprendedores.",
+            1: "¡Estás dando tus primeros pasos! Tienes algunas nociones, pero necesitas fortalecer tu comprensión del emprendimiento. Considera unirte a comunidades de emprendedores.",
+            2: "Vas aprendiendo. Muestras interés en el emprendimiento, pero aún hay aspectos importantes que debes conocer mejor. Sigue educándote.",
+            3: "¡Tienes una base decente! Comprendes algunos conceptos básicos. Continúa desarrollando tus habilidades empresariales.",
+            4: "¡Buen progreso! Muestras una comprensión sólida de varios aspectos del emprendimiento. Estás en el camino correcto.",
+            5: "¡Muy bien! Tienes una buena base de conocimientos y actitudes emprendedoras. Estás casi listo para comenzar.",
+            6: "¡Excelente! Demuestras una gran comprensión de lo que significa emprender. Tienes una mentalidad muy apropiada.",
+            7: "¡Extraordinario! Tienes una mentalidad emprendedora muy madura. Estás más que preparado para comenzar tu viaje emprendedor."
+        };
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let puntaje = 0;
+            const resultadoDiv = document.getElementById('resultado');
+            const progressBar = document.querySelector('.progress');
+
+            // Verificar cada respuesta
+            Object.keys(respuestasCorrectas).forEach(pregunta => {
+                const respuestaSeleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+                if (respuestaSeleccionada && respuestaSeleccionada.value === respuestasCorrectas[pregunta]) {
+                    puntaje++;
+                }
+            });
+
+            // Calcular porcentaje para la barra de progreso
+            const porcentaje = (puntaje / 7) * 100;
+            progressBar.style.width = porcentaje + '%';
+
+            // Determinar la clase CSS según el puntaje
+            let claseResultado;
+            if (puntaje >= 6) {
+                claseResultado = 'resultado-excelente';
+            } else if (puntaje >= 4) {
+                claseResultado = 'resultado-bueno';
+            } else if (puntaje >= 2) {
+                claseResultado = 'resultado-regular';
+            } else {
+                claseResultado = 'resultado-malo';
+            }
+
+            // Mostrar el resultado
+            resultadoDiv.textContent = `Obtuviste ${puntaje}/7. ${mensajes[puntaje]}`;
+            resultadoDiv.className = claseResultado;
+            resultadoDiv.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
